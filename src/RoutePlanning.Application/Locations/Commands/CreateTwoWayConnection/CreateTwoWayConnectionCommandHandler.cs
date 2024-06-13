@@ -19,7 +19,7 @@ public sealed class CreateTwoWayConnectionCommandHandler : ICommandHandler<Creat
         var locationA = await locations.FirstAsync(l => l.Id == command.LocationAId, cancellationToken);
         var locationB = await locations.FirstAsync(l => l.Id == command.LocationBId, cancellationToken);
 
-        locationA.AddConnection(locationB, command.Distance);
-        locationB.AddConnection(locationA, command.Distance);
+        locationA.AddConnection(locationB, command.Distance, command.TravelCost);
+        locationB.AddConnection(locationA, command.Distance, command.TravelCost);
     }
 }
