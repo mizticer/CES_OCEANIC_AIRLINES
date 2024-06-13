@@ -46,10 +46,10 @@ public static class DatabaseInitialization
 
     private static async Task SeedUsers(RoutePlanningDatabaseContext context)
     {
-        var alice = new User("alice", User.ComputePasswordHash("alice123!"), "d");
+        var alice = new User("alice", User.ComputePasswordHash("alice123!"), "al@somemail.dk", "Salesperson");
         await context.AddAsync(alice);
 
-        var bob = new User("bob", User.ComputePasswordHash("!CapableStudentCries25"), "ad");
+        var bob = new User("bob", User.ComputePasswordHash("!CapableStudentCries25"), "bob@somemail.com", "Manager");
         await context.AddAsync(bob);
     }
 

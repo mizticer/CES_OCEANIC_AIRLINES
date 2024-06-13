@@ -26,14 +26,12 @@ public sealed partial class DistanceCalculator
 
     private async Task CalculateDistance()
     {
-        if (preferredDate < DateTime.Today)
+
+        if (SelectedSource is not null && SelectedDestination is not null)
         {
-            if (SelectedSource is not null && SelectedDestination is not null)
-            {
-                DisplaySource = SelectedSource.Name;
-                DisplayDestination = SelectedDestination.Name;
-                DisplayDistance = await Mediator.Send(new DistanceQuery(SelectedSource.LocationId, SelectedDestination.LocationId), CancellationToken.None);
-            }
+            DisplaySource = SelectedSource.Name;
+            DisplayDestination = SelectedDestination.Name;
+            DisplayDistance = await Mediator.Send(new DistanceQuery(SelectedSource.LocationId, SelectedDestination.LocationId), CancellationToken.None);
         }
     }
 }
