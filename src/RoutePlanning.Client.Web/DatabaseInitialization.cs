@@ -26,22 +26,133 @@ public static class DatabaseInitialization
 
     private static async Task SeedLocationsAndRoutes(RoutePlanningDatabaseContext context)
     {
-        var berlin = new Location("Berlin");
-        await context.AddAsync(berlin);
+        var cairo = new Location("CAIRO");
+        await context.AddAsync(cairo);
 
-        var copenhagen = new Location("Copenhagen");
-        await context.AddAsync(copenhagen);
+        var omdurman = new Location("OMDURMAN");
+        await context.AddAsync(omdurman);
 
-        var paris = new Location("Paris");
-        await context.AddAsync(paris);
+        var tripoli = new Location("TRIPOLI");
+        await context.AddAsync(tripoli);
 
-        var warsaw = new Location("Warsaw");
-        await context.AddAsync(warsaw);
+        var darfurr = new Location("DARFUR");
+        await context.AddAsync(darfurr);
 
-        CreateTwoWayConnection(berlin, warsaw, 573, 100);
-        CreateTwoWayConnection(berlin, copenhagen, 763, 20);
-        CreateTwoWayConnection(berlin, paris, 1054, 40);
-        CreateTwoWayConnection(copenhagen, paris, 1362, 69);
+        var tunis = new Location("TUNIS");
+        await context.AddAsync(tunis);
+
+        var tanger = new Location("TANGER");
+        await context.AddAsync(tanger);
+
+        var marrakesh = new Location("MARRAKESH");
+        await context.AddAsync(marrakesh);
+
+        var sahara = new Location("SAHARA");
+        await context.AddAsync(sahara);
+
+        var dakar = new Location("DAKAR");
+        await context.AddAsync(dakar);
+
+        var sierraLeone = new Location("SIERRA LEONE");
+        await context.AddAsync(sierraLeone);
+
+        var timbuktu = new Location("TIMBUKTU");
+        await context.AddAsync(timbuktu);
+
+        var guldKysten = new Location("GULDKYSTEN");
+        await context.AddAsync(guldKysten);
+
+        var slaveKusten = new Location("SLAVEKUSTEN");
+        await context.AddAsync(slaveKusten);
+
+        var wadai = new Location("WADAI");
+        await context.AddAsync(wadai);
+
+        var congo = new Location("CONGO");
+        await context.AddAsync(congo);
+
+        var luanda = new Location("LUANDA");
+        await context.AddAsync(luanda);
+
+        var kabalo = new Location("KABALO");
+        await context.AddAsync(kabalo);
+
+        var mocambique = new Location("MOCAMBIQUE");
+        await context.AddAsync(mocambique);
+
+        var drageBjerget = new Location("DRAGEBJERGET");
+        await context.AddAsync(drageBjerget);
+
+        var victoriaFalden = new Location("VICTORIAFALDEN");
+        await context.AddAsync(victoriaFalden);
+
+        var hvalBugten = new Location("HVALBUGTEN");
+        await context.AddAsync(hvalBugten);
+
+        var kapStaden = new Location("KAPSTADEN");
+        await context.AddAsync(kapStaden);
+
+        var victoriaSoen = new Location("VICTORIASOEN");
+        await context.AddAsync(victoriaSoen);
+
+        var bahrelGhazal = new Location("BAHREL GHAZAL");
+        await context.AddAsync(bahrelGhazal);
+
+        var suakin = new Location("SUAKIN");
+        await context.AddAsync(suakin);
+
+        var addisAbeba = new Location("ADDIS ABEBA");
+        await context.AddAsync(addisAbeba);
+
+        var kapGuardaFui = new Location("KAP GUARDAFUI");
+        await context.AddAsync(kapGuardaFui);
+
+        var zanzibar = new Location("ZANZIBAR");
+        await context.AddAsync(zanzibar);
+
+        var deKanariskeOer = new Location("DE KANARISKE OER");
+        await context.AddAsync(deKanariskeOer);
+
+        var stHelena = new Location("ST HELENA");
+        await context.AddAsync(stHelena);
+
+        var kapStMarie = new Location("KAP ST MARIE");
+        await context.AddAsync(kapStMarie);
+
+        var tamatave = new Location("TAMATAVE");
+        await context.AddAsync(tamatave);
+
+        CreateTwoWayConnection(cairo, tunis, 1500, 200);
+        CreateTwoWayConnection(cairo, omdurman, 800, 120);
+        CreateTwoWayConnection(omdurman, tripoli, 1600, 220);
+        CreateTwoWayConnection(tripoli, tunis, 800, 100);
+        CreateTwoWayConnection(tunis, tanger, 2000, 250);
+        CreateTwoWayConnection(tanger, marrakesh, 700, 90);
+        CreateTwoWayConnection(marrakesh, sahara, 1400, 180);
+        CreateTwoWayConnection(sahara, dakar, 1000, 150);
+        CreateTwoWayConnection(dakar, sierraLeone, 700, 100);
+        CreateTwoWayConnection(sierraLeone, timbuktu, 1200, 160);
+        CreateTwoWayConnection(timbuktu, guldKysten, 800, 110);
+        CreateTwoWayConnection(guldKysten, slaveKusten, 300, 50);
+        CreateTwoWayConnection(slaveKusten, wadai, 900, 130);
+        CreateTwoWayConnection(wadai, congo, 1500, 190);
+        CreateTwoWayConnection(congo, luanda, 800, 100);
+        CreateTwoWayConnection(luanda, kabalo, 1000, 140);
+        CreateTwoWayConnection(kabalo, mocambique, 1100, 150);
+        CreateTwoWayConnection(mocambique, drageBjerget, 1300, 170);
+        CreateTwoWayConnection(drageBjerget, victoriaFalden, 900, 120);
+        CreateTwoWayConnection(victoriaFalden, hvalBugten, 1400, 180);
+        CreateTwoWayConnection(hvalBugten, kapStaden, 1200, 160);
+        CreateTwoWayConnection(kapStaden, victoriaSoen, 1800, 220);
+        CreateTwoWayConnection(victoriaSoen, bahrelGhazal, 1500, 200);
+        CreateTwoWayConnection(bahrelGhazal, suakin, 1000, 130);
+        CreateTwoWayConnection(suakin, addisAbeba, 1100, 150);
+        CreateTwoWayConnection(addisAbeba, kapGuardaFui, 1600, 210);
+        CreateTwoWayConnection(kapGuardaFui, zanzibar, 1400, 180);
+        CreateTwoWayConnection(zanzibar, deKanariskeOer, 1200, 160);
+        CreateTwoWayConnection(deKanariskeOer, stHelena, 1700, 220);
+        CreateTwoWayConnection(stHelena, kapStMarie, 1800, 230);
+        CreateTwoWayConnection(kapStMarie, tamatave, 1300, 170);
     }
 
     private static async Task SeedUsers(RoutePlanningDatabaseContext context)
