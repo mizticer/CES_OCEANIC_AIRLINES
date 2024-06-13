@@ -1,11 +1,9 @@
-﻿
-
-using Netcompany.Net.DomainDrivenDesign.Models;
+﻿using Netcompany.Net.DomainDrivenDesign.Models;
 
 namespace RoutePlanning.Domain.Locations;
 public sealed record Price : IValueObject
 {
-    public Price(int value)
+    public Price(decimal value)
     {
         if (value <= 0)
         {
@@ -15,9 +13,9 @@ public sealed record Price : IValueObject
         Value = value;
     }
 
-    public int Value { get; private set; }
+    public decimal Value { get; private set; }
 
-    public static implicit operator Price(int distance) => new(distance);
+    public static implicit operator Price(decimal distance) => new(distance);
 
-    public static implicit operator int(Price distance) => distance.Value;
+    public static implicit operator decimal(Price distance) => distance.Value;
 }

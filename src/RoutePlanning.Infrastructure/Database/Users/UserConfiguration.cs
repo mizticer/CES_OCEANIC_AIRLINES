@@ -13,5 +13,6 @@ public sealed class UserConfiguration : IEntityTypeConfiguration<User>
         builder.Property(x => x.Username);
         builder.Property(x => x.PasswordHash);
         builder.Property(x => x.Email);
+        builder.HasMany(x => x.Orders).WithOne(x => x.User);
     }
 }

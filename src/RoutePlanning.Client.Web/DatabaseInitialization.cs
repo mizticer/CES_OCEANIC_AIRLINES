@@ -38,10 +38,10 @@ public static class DatabaseInitialization
         var warsaw = new Location("Warsaw");
         await context.AddAsync(warsaw);
 
-        CreateTwoWayConnection(berlin, warsaw, 573);
-        CreateTwoWayConnection(berlin, copenhagen, 763);
-        CreateTwoWayConnection(berlin, paris, 1054);
-        CreateTwoWayConnection(copenhagen, paris, 1362);
+        CreateTwoWayConnection(berlin, warsaw, 573, 100);
+        CreateTwoWayConnection(berlin, copenhagen, 763, 20);
+        CreateTwoWayConnection(berlin, paris, 1054, 40);
+        CreateTwoWayConnection(copenhagen, paris, 1362, 69);
     }
 
     private static async Task SeedUsers(RoutePlanningDatabaseContext context)
@@ -53,9 +53,9 @@ public static class DatabaseInitialization
         await context.AddAsync(bob);
     }
 
-    private static void CreateTwoWayConnection(Location locationA, Location locationB, int distance)
+    private static void CreateTwoWayConnection(Location locationA, Location locationB, int distance, decimal travelCost)
     {
-        locationA.AddConnection(locationB, distance);
-        locationB.AddConnection(locationA, distance);
+        locationA.AddConnection(locationB, distance, travelCost);
+        locationB.AddConnection(locationA, distance, travelCost);
     }
 }
