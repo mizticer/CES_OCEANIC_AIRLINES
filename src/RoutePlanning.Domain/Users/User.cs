@@ -9,16 +9,18 @@ namespace RoutePlanning.Domain.Users;
 [DebuggerDisplay("{Username}")]
 public sealed class User : AggregateRoot<User>
 {
-    public User(string username, string passwordHash, string email)
+    public User(string username, string passwordHash, string email, string role)
     {
         Username = username;
         PasswordHash = passwordHash;
         Email = email;
+        Role = role;
     }
 
     public string Username { get; set; }
     public string Email { get; set; }
     public string PasswordHash { get; set; }
+    public string Role { get; set; }
 
     private readonly List<Order> orders = [];
     public IReadOnlyCollection<Order> Orders => orders.AsReadOnly();

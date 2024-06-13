@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using RoutePlanning.Application.Locations.Commands.CreateTwoWayConnection;
+using RoutePlanning.Application.Locations.Queries.Connections;
 using RoutePlanning.Application.Orders.Commands;
 
 namespace RoutePlanning.Client.Web.Api;
@@ -18,15 +18,52 @@ public sealed class RoutesController : ControllerBase
     }
 
     [HttpGet("[action]")]
-    public Task<string> HelloWorld()
+    public Task<string> HelloWorld(DateTime dateFrom, DateTime dateTo, int weight, string type)
     {
-        return Task.FromResult("Hello World!");
+        return Task.FromResult($"Hello World, {dateFrom}, {dateTo}, {weight}, {type}!");
     }
-
-    [HttpPost("[action]")]
-    public async Task AddTwoWayConnection(CreateTwoWayConnectionCommand command)
+    [HttpGet("[action]")]
+    public async Task<List<ResponseContext>> GetConnections(DateTime dateFrom, DateTime dateTo, double weight, string freightType)
     {
-        await mediator.Send(command);
+        var command = new ConnectionQuery();
+        var connections = await mediator.Send(command);
+        if (freightType.Equals("Live Animal"))
+        {
+            return new List<ResponseContext>();
+        }
+
+        var responses = new List<ResponseContext>();
+        if (weight > 5)
+        {
+            foreach (var connection in connections)
+            {
+                var response = new ResponseContext(80, connection);
+                responses.Add(response);
+            }
+
+            return responses;
+        }
+
+        if (weight < 1)
+        {
+            foreach (var connection in connections)
+            {
+                var response = new ResponseContext(40, connection);
+                responses.Add(response);
+            }
+
+            return responses;
+
+        }
+
+        foreach (var connection in connections)
+        {
+            var response = new ResponseContext(60, connection);
+            responses.Add(response);
+        }
+
+        return responses;
+
     }
 
     [HttpPost("[action]")]
