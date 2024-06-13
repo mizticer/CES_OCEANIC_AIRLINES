@@ -14,4 +14,7 @@
     <ProjectReference Include="..\RoutePlanning.Application\RoutePlanning.Application.csproj" />
     <ProjectReference Include="..\RoutePlanning.Infrastructure\RoutePlanning.Infrastructure.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\img\" />
+  </ItemGroup>
 </Project>
