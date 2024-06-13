@@ -10,10 +10,8 @@ internal class OrderConfiguration : IEntityTypeConfiguration<Order>
         builder.HasKey(x => x.Id);
         builder.Property(x => x.CreatedAt);
         builder.Property(x => x.ExpectedTimeOfArrival);
-        builder.OwnsOne(x => x.TotalDistance);
-        builder.OwnsOne(x => x.TotalCost);
         builder.OwnsOne(x => x.Weight);
-        builder.HasOne(x => x.Freightt);
+        builder.HasOne(x => x.FreightType);
         builder.HasOne(x => x.User).WithMany();
         builder.HasMany(x => x.Connections).WithMany(x => x.Orders);
     }

@@ -3,7 +3,7 @@ using RoutePlanning.Domain.Locations;
 
 namespace RoutePlanning.Domain.Orders;
 
-public sealed class FreightType : Entity<FreightType>
+public sealed class FreightType : AggregateRoot<FreightType>
 {
     public FreightType(Price fee, string freightTypeName)
     {
