@@ -13,6 +13,8 @@ public sealed partial class DistanceCalculator
     private string? DisplaySource { get; set; }
     private string? DisplayDestination { get; set; }
     private int? DisplayDistance { get; set; }
+    private double packageWeight { get; set; }
+    private DateTime preferredDate { get; set; } = DateTime.Today.AddDays(1);
 
     [Inject]
     private IMediator Mediator { get; set; } = default!;
@@ -24,11 +26,14 @@ public sealed partial class DistanceCalculator
 
     private async Task CalculateDistance()
     {
-        if (SelectedSource is not null && SelectedDestination is not null)
+        if (preferredDate < DateTime.Today)
         {
-            DisplaySource = SelectedSource.Name;
-            DisplayDestination = SelectedDestination.Name;
-            DisplayDistance = await Mediator.Send(new DistanceQuery(SelectedSource.LocationId, SelectedDestination.LocationId), CancellationToken.None);
+            if (SelectedSource is not null && SelectedDestination is not null)
+            {
+                DisplaySource = SelectedSource.Name;
+                DisplayDestination = SelectedDestination.Name;
+                DisplayDistance = await Mediator.Send(new DistanceQuery(SelectedSource.LocationId, SelectedDestination.LocationId), CancellationToken.None);
+            }
         }
     }
 }
