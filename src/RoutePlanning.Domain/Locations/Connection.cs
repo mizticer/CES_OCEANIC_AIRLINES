@@ -5,7 +5,7 @@ using RoutePlanning.Domain.Orders;
 namespace RoutePlanning.Domain.Locations;
 
 [DebuggerDisplay("{Source} --{Distance}--> {Destination}")]
-public sealed class Connection : Entity<Connection>
+public sealed class Connection : AggregateRoot<Connection>
 {
     public Connection(Location source, Location destination, Distance distance, Price travelCost)
     {
