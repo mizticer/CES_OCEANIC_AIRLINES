@@ -1,0 +1,43 @@
+@using Microsoft.EntityFrameworkCore
+@using System.Collections.Generic
+@using System.Linq
+
+<div class="salespeople-container">
+	<div class="search-bar">
+		<input type="text" @bind="searchQuery" placeholder="Search salespeople..." class="form-control" />
+	</div>
+	<ul class="salespeople-list">
+		@foreach (var person in FilteredSalesPeople)
+		{
+			<li>@person</li>
+		}
+	</ul>
+</div>
+
+@code {
+	private string searchQuery = string.Empty;
+
+	private List<string> SalesPeople = new List<string>
+	{
+		"Alice Johnson",
+		"Bob Smith",
+		"Charlie Brown",
+		"David Wilson",
+		"Eva Davis",
+		"Frank Thomas",
+		"Grace Lee",
+		"Hannah White",
+		"Ian Black",
+		"Jack Green",
+		"Kelly Clark",
+		"Liam Adams",
+		"Mia Turner",
+		"Noah Evans",
+		"Olivia Scott"
+	};
+
+	private IEnumerable<string> FilteredSalesPeople =>
+		string.IsNullOrWhiteSpace(searchQuery)
+		? SalesPeople
+		: SalesPeople.Where(person => person.Contains(searchQuery, StringComparison.OrdinalIgnoreCase));
+}

@@ -1,0 +1,27 @@
+﻿.salespeople-container {
+    width: 25%;
+    float: left;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.search-bar {
+    margin-bottom: 10px;
+}
+
+.salespeople-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+    .salespeople-list li {
+        padding: 8px;
+        background: #CAC8F1;
+        margin-bottom: 5px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        .salespeople-list li:hover {
+            background: #9F9CE1;
+        }
