@@ -1,5 +1,4 @@
-﻿using System.Text.Json;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using RoutePlanning.Application.Locations.Commands.CreateTwoWayConnection;
 using RoutePlanning.Application.Orders.Commands;
@@ -33,8 +32,6 @@ public sealed class RoutesController : ControllerBase
     [HttpPost("[action]")]
     public async Task CreateOrder(CreateOrderCommand command)
     {
-        var x = JsonSerializer.Serialize(command);
-        Console.WriteLine(x);
         await mediator.Send(command);
     }
 }
