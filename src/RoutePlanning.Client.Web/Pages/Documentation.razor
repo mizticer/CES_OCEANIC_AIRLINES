@@ -1,30 +1,9 @@
 ﻿@page "/documentation"
 
-<ListView Type="Manager"></ListView>
+<PageTitle>History</PageTitle>
 
-
-<h4>Blazor Server - Frontend</h4>
+<h1>History</h1>
 <p>
-    <a href="https://learn.microsoft.com/da-dk/aspnet/core/blazor/?view=aspnetcore-6.0#blazor-server">Blazor Server</a> provide an easy hosting of a single-page-application (SPA) that is written in the HTML-like Razor syntax.
-    Note that C# in the Razor-files is executed in the backend, which eliminates the need for any explicit frontend-backend communcation, since this is handled seemlessly by Blazer Server (through websockets).
+	This page shows the history of your sales made.
 </p>
-<p>
-    The accelerator includes <a href="https://getbootstrap.com/docs/5.1">Bootstrap</a> components and the iconset <a href="https://icon-sets.iconify.design/oi/">Open Iconic</a>, which are used like this:
-    <br />
-    <div class="alert alert-info">A Bootstrap alert with an Open Iconic icon: <span class="oi oi-circle-check" aria-hidden="true"></span></div>
-</p>
-
-
-<h4>In-memory Database</h4>
-<p>
-    The accelerator uses an in-memory SQLite database (for simplicity), which is seeded at startup by <b>DatabaseInitialization.cs</b>.
-    Note that due to the use of an in-memory database, the database is lost when the application terminates, and recreated from scratch (EnsureCreated) on every startup.
-    If you are replacing the in-memory database with a persistent datastore, you therefore need to consider changes regarding data-seeding to avoid reseeding the same data at every startup.
-</p>
-
-
-<h4>External API</h4>
-<p>
-    The <b>RoutePlanning.Client.Web</b> exposes an API in <b>RouteController.cs</b>. Note the attribute <b>[Authorize(nameof(TokenRequirement))]</b>, which enforces the caller to send a token as a header in the request.
-    See the <b>TokenTests.cs</b> in <b>RoutePlanning.Client.Web.ApiTests</b> for a usage-example of this API.
-</p>
+<ListView Type="Reports"></ListView>
