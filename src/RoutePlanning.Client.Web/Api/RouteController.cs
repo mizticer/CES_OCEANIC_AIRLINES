@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RoutePlanning.Application.Locations.Commands.CreateTwoWayConnection;
 using RoutePlanning.Client.Web.Authorization;
+using RoutePlanning.Domain.Locations;
+using RoutePlanning.Domain.Orders;
 
 namespace RoutePlanning.Client.Web.Api;
 
@@ -23,9 +25,14 @@ public sealed class RoutesController : ControllerBase
     {
         return Task.FromResult($"Hello World, {dateFrom}, {dateTo}, {weight}, {type}!");
     }
+    [HttpGet("[action]")]
+    public Task<List<Connection>> GetConnections(DateTime dateFrom, DateTime dateTo, double weight, string freightType)
+    {
+        var command = new 
+    }
 
     [HttpPost("[action]")]
-    public async Task AddTwoWayConnection(CreateTwoWayConnectionCommand command)
+    public async Task AddTwoWayConnection(GetConnectionsCommand command)
     {
         await mediator.Send(command);
     }
