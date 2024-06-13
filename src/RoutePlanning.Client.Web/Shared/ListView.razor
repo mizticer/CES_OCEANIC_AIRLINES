@@ -1,0 +1,76 @@
+﻿@using Microsoft.EntityFrameworkCore
+@code {
+    [Parameter] public string Type { get; set; } = "Sales";
+
+    Dictionary<int, Route> rows = new()
+    {
+        {0, new Route {Start="CAIRO", Destination="TUNIS", Distance=150.5, Duration=12, Price=40}},
+        {1, new Route {Start="CAIRO", Destination="TUNIS", Distance=150.5, Duration=12, Price=40}},
+        {2, new Route {Start="CAIRO", Destination="TUNIS", Distance=150.5, Duration=12, Price=40}},
+        {3, new Route {Start="CAIRO", Destination="TUNIS", Distance=150.5, Duration=12, Price=40}},
+        {4, new Route {Start="CAIRO", Destination="TUNIS", Distance=150.5, Duration=12, Price=40}},
+        {5, new Route {Start="CAIRO", Destination="TUNIS", Distance=150.5, Duration=12, Price=40}},
+        {6, new Route {Start="CAIRO", Destination="TUNIS", Distance=150.5, Duration=12, Price=40}},
+        {7, new Route {Start="CAIRO", Destination="TUNIS", Distance=150.5, Duration=12, Price=40}},
+        {8, new Route {Start="CAIRO", Destination="TUNIS", Distance=150.5, Duration=12, Price=40}},
+        {9, new Route {Start="CAIRO", Destination="TUNIS", Distance=150.5, Duration=12, Price=40}},
+        {10, new Route {Start="CAIRO", Destination="TUNIS", Distance=150.5, Duration=12, Price=40}},
+    };
+
+    class Route
+    {
+        public string? Start { get; set; }
+        public string? Destination { get; set; }
+        public double? Distance { get; set; }
+        public double? Duration { get; set; }
+        public double? Price { get; set; }
+    }
+}
+
+<div class="route-listview overflow-auto">
+    <table class="table table-striped">
+        <thead class="table-header">
+            <tr style="background-color: white;">
+                <th scope="col">Start</th>
+                <th scope="col">Destination</th>
+                <th scope="col">Distance</th>
+                <th scope="col">Duration</th>
+                <th scope="col">Cost</th>
+                @if (Type == "Sales")
+                {
+                    <th scope="col">
+                        <button type="button" class="btn btn-dark btn-sm">Filters</button>
+                    </th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var record in rows)
+            {
+                <tr>
+                    <td>
+                        @record.Value.Start
+                    </td>
+                    <td>
+                        @record.Value.Destination
+                    </td>
+                    <td>
+                        @($"{@record.Value.Distance} km")
+                    </td>
+                    <td>
+                        @($"{@record.Value.Duration}h")
+                    </td>
+                    <td>
+                        @($"{@record.Value.Price} USD")
+                    </td>
+                    @if (Type == "Sales")
+                    {
+                        <td>
+                            <button type="button" class="btn btn-success btn-sm">Book</button>
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

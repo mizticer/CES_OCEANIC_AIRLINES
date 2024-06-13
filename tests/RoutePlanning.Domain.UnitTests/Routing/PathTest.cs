@@ -13,9 +13,9 @@ public sealed class PathTest
         var locationB = new Location("B");
         var locationC = new Location("C");
 
-        locationA.AddConnection(locationB, 2);
-        locationB.AddConnection(locationC, 3);
-        locationA.AddConnection(locationC, 6);
+        locationA.AddConnection(locationB, 2, 4);
+        locationB.AddConnection(locationC, 3, 7);
+        locationA.AddConnection(locationC, 6, 3);
 
         var locations = new List<Location> { locationA, locationB, locationC };
 

@@ -1,23 +1,38 @@
 ﻿@page "/distancecalculator"
 
-<PageTitle>Distance Calculator</PageTitle>
+<PageTitle>Book Shipment</PageTitle>
 
-<h1>Distance Calculator</h1>
+<h1>Book Shipment</h1>
 
 <LocationSelector Label="Source" Locations="@Locations" @bind-Selected="SelectedSource"></LocationSelector>
 <LocationSelector Label="Destination" Locations="@Locations" @bind-Selected="SelectedDestination"></LocationSelector>
 
-<button class="btn btn-primary mb-5" @onclick="CalculateDistance">Calculate</button>
+<div class="form-group mb-3" style="display: flex;">
+    <div style="flex: 1;">
+        <label for="packageWeight">Package Weight (kg):</label>
+		<input type="number" id="packageWeight" name="packageWeight" min="0" step="0.1" class="form-control" style="width: 80%;" @bind="packageWeight">
+    </div>
+	<div style="flex: 1;">
+        <label for="preferredDate">Preferred Delivery Date:</label>
+		<input type="date" id="preferredDate" name="preferredDate" class="form-control" style="width: 80%;" min="@DateTime.Now.AddDays(1).ToString("yyyy-MM-dd")">
+    </div>
+	<div style="flex: 1;  margin-right: 30%;">
+		<label for="freightType">Freight Type:</label>
+		<select id="freightType" name="freightType" class="form-control">
+			<option value="No freight type">No freight type</option>
+			<option value="Weapons">Weapons</option>
+			<option value="Refrigerated goods">Refrigerated goods</option>
+			<option value="Fragile">Fragile</option>
+		</select>
+	</div>
+</div>
+
+
+<button class="btn btn-primary mb-5" @onclick="CalculateDistance">Search</button>
 
 <br />
 
 @if (DisplayDistance is not null)
 {
-    <span class="alert alert-primary">
-        <span>@DisplaySource</span>
-        <span class="oi oi-arrow-right mr-1" aria-hidden="true"></span>
-        <span>@DisplayDistance km</span>
-        <span class="oi oi-arrow-right" aria-hidden="true"></span>
-        <span>@DisplayDestination</span>
-    </span>
+    <ListView Type="Sales"></ListView>
 }

@@ -1,0 +1,10 @@
+.route-listview {
+    height: 45vh;
+}
+
+.table-header {
+    background-color: white;
+    position: sticky;
+    top: 0;
+    border-bottom: 1px solid black;
+}
