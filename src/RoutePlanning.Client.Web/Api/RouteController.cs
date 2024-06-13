@@ -19,9 +19,9 @@ public sealed class RoutesController : ControllerBase
     }
 
     [HttpGet("[action]")]
-    public Task<string> HelloWorld()
+    public Task<string> HelloWorld(DateTime dateFrom, DateTime dateTo, int weight, string type)
     {
-        return Task.FromResult("Hello World!");
+        return Task.FromResult($"Hello World, {dateFrom}, {dateTo}, {weight}, {type}!");
     }
 
     [HttpPost("[action]")]
