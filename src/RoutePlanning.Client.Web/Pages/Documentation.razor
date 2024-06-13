@@ -1,51 +1,6 @@
 ﻿@page "/documentation"
 
-<PageTitle>Technical Documentation</PageTitle>
-
-<h1>Technical Documentation</h1>
-
-<p>
-    This accelerator is a Blazor Server application that is running with an in-memory SQLite database. The entry-point of the application is <b>Program.cs</b> in <b>RoutePlanning.Client.Web</b>, which configures and connects to the other solution projects.
-</p>
-
-
-<h4>A trip through the stack</h4>
-
-<p>
-    When a user presses the "Calculate"-button in the <a href="distancecalculator">Distance Calculator</a>, the following happens:
-</p>
-<ol>
-    <li><b>DistanceCalculator.razor</b> - <i>onclick</i> calls the <i>CalculateDistance</i>-method.</li>
-    <li><b>DistanceCalculator.razor.cs</b> - The <i>CalculateDistance</i>-method creates and sends a <i>DistanceQuery</i> using the <a href="https://source.netcompany.com/tfs/Foundations/DOTNET/_git/DOTNET?path=/src/Cqs/readme.md&_a=preview">CQS-pattern</a>.</li>
-    <li>
-        <b>DistanceQueryHandler.cs</b> - The handler for <i>DistanceQuery</i> handles the request and invokes the distance service <i>IShortestDistanceService</i> (dependency-injected).
-        <ul>
-            <li>The source and destination are fetched from the database through the <i>_locations</i>-queryable (dependency-injected).</li>
-        </ul>
-    </li>
-    <li><b>ShortestDistanceService.cs</b> - Computes the distance using Dijkstra's shortest path algorithm.</li>
-</ol>
-
-<h4>Solution projects</h4>
-
-<p>
-    The accelerator is structured according to Clean Architecture as defined in <a href="https://source.netcompany.com/tfs/Foundations/DOTNET/_wiki/wikis/DOTNET%20Documentation?wikiVersion=GBrelease/next&pagePath=/Netcompany%20Methodology/O0500%20%252D%20Software%20Architecture">O0500 - Software Architecture</a>.
-</p>
-
-<ul>
-    <li><b>RoutePlanning.Domain</b> - Contains the Domain-Driven Design (DDD) model and logic.
-        <ul>
-            <li><b>RoutePlanning.Domain.UnitTests</b> - Unit tests for the domain</li>
-        </ul>
-    </li>
-    <li><b>RoutePlanning.Infrastructure</b> - Contains the IEntityTypeConfiguration for each domain model, which describe how the domain model is mapped to a database schema.</li>
-    <li><b>RoutePlanning.Application</b> - Contains requests that each constitute a single use-case in the application. These requests are <a href="https://source.netcompany.com/tfs/Foundations/DOTNET/_git/DOTNET?path=/src/Cqs/readme.md&_a=preview">separated in Commands and Queries (CQS)</a>, to control whether they are read or write operations.</li>
-    <li><b>RoutePlanning.Client.Web</b> - Contains the Blazer Server frontend and external API.
-        <ul>
-            <li><b>RoutePlanning.Client.Web.ApiTests</b> - API tests for the web application.</li>
-        </ul>
-    </li>
-</ul>
+<ListView Type="Manager"></ListView>
 
 
 <h4>Blazor Server - Frontend</h4>

@@ -47,7 +47,7 @@
         <tbody>
             @foreach (var record in rows)
             {
-                <tr>
+                <tr @onclick="OnClickShowModal">
                     <td>
                         @record.Value.Start
                     </td>
@@ -74,3 +74,8 @@
         </tbody>
     </table>
 </div>
+
+@if (ShowModal)
+{
+    <BookingModal></BookingModal>
+}
