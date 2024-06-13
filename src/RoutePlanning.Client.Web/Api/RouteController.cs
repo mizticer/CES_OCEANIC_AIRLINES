@@ -1,11 +1,7 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using RoutePlanning.Application.Locations.Commands.CreateTwoWayConnection;
 using RoutePlanning.Application.Locations.Queries.Connections;
-using RoutePlanning.Client.Web.Authorization;
-using RoutePlanning.Domain.Locations;
-using RoutePlanning.Domain.Orders;
+using RoutePlanning.Application.Orders.Commands;
 
 namespace RoutePlanning.Client.Web.Api;
 
@@ -70,9 +66,9 @@ public sealed class RoutesController : ControllerBase
 
     }
 
-    //[HttpPost("[action]")]
-    //public async Task AddTwoWayConnection(GetConnectionsCommand command)
-    //{
-    //    await mediator.Send(command);
-    //}
+    [HttpPost("[action]")]
+    public async Task CreateOrder(CreateOrderCommand command)
+    {
+        await mediator.Send(command);
+    }
 }
