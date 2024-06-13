@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using Netcompany.Net.DomainDrivenDesign.Models;
+using RoutePlanning.Domain.Delivery;
 
 namespace RoutePlanning.Domain.Locations;
 
@@ -13,13 +14,13 @@ public sealed class Location : AggregateRoot<Location>
 
     public string Name { get; set; }
 
-    private readonly List<Connection> connections = [];
+    private readonly List<Connection> connections = new List<Connection>();
 
     public IReadOnlyCollection<Connection> Connections => connections.AsReadOnly();
 
-    public Connection AddConnection(Location destination, int distance)
+    public Connection AddConnection(Location destination, Distance distance, double cost)
     {
-        Connection connection = new(this, destination, distance);
+        Connection connection = new Connection(this, destination, distance, cost);
 
         connections.Add(connection);
 

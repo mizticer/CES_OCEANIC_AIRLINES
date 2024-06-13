@@ -1,16 +1,18 @@
 ﻿using System.Diagnostics;
 using Netcompany.Net.DomainDrivenDesign.Models;
+using RoutePlanning.Domain.Delivery;
 
 namespace RoutePlanning.Domain.Locations;
 
 [DebuggerDisplay("{Source} --{Distance}--> {Destination}")]
-public sealed class Connection : Entity<Connection>
+public sealed class Connection : AggregateRoot<Connection>
 {
-    public Connection(Location source, Location destination, Distance distance)
+    public Connection(Location source, Location destination, Distance distance, Cost cost)
     {
         Source = source;
         Destination = destination;
         Distance = distance;
+        Cost = cost;
     }
 
     private Connection()
@@ -18,6 +20,7 @@ public sealed class Connection : Entity<Connection>
         Source = null!;
         Destination = null!;
         Distance = null!;
+        Cost = null!;
     }
 
     public Location Source { get; private set; }
@@ -25,4 +28,6 @@ public sealed class Connection : Entity<Connection>
     public Location Destination { get; private set; }
 
     public Distance Distance { get; private set; }
+
+    public Cost Cost { get; private set; }
 }
