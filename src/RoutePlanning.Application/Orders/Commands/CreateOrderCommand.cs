@@ -1,11 +1,9 @@
-﻿using RoutePlanning.Domain.Locations;
-using RoutePlanning.Domain.Orders;
-using RoutePlanning.Domain.Users;
+﻿using Netcompany.Net.Cqs.Commands;
 
 namespace RoutePlanning.Application.Orders.Commands;
 
 public sealed record CreateOrderCommand(
     double Weight,
-    User.EntityId UserEntityId,
-    FreightType.EntityId FreightEntityId,
-    List<Connection.EntityId> Route);
+    Guid UserEntityId,
+    Guid FreightEntityId,
+    List<Guid> Route) : ICommand;

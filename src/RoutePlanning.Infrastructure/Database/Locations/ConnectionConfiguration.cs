@@ -10,7 +10,13 @@ public sealed class ConnectionConfiguration : IEntityTypeConfiguration<Connectio
     {
         builder.HasKey(x => x.Id);
 
-        builder.HasOne(x => x.Destination).WithMany();
+        builder.HasOne(x => x.Source)
+            .WithMany()
+            .OnDelete(DeleteBehavior.NoAction);
+
+        builder.HasOne(x => x.Destination)
+            .WithMany()
+            .OnDelete(DeleteBehavior.NoAction); ;
 
         builder.OwnsOne(x => x.Distance);
         builder.OwnsOne(x => x.TravelCost);

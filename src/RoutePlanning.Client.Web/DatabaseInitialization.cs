@@ -1,5 +1,6 @@
 ﻿using Netcompany.Net.UnitOfWork;
 using RoutePlanning.Domain.Locations;
+using RoutePlanning.Domain.Orders;
 using RoutePlanning.Domain.Users;
 using RoutePlanning.Infrastructure.Database;
 
@@ -42,6 +43,9 @@ public static class DatabaseInitialization
         CreateTwoWayConnection(berlin, copenhagen, 763, 20);
         CreateTwoWayConnection(berlin, paris, 1054, 40);
         CreateTwoWayConnection(copenhagen, paris, 1362, 69);
+
+        var freightType1 = new FreightType(100, "Weapons");
+        await context.AddAsync(freightType1);
     }
 
     private static async Task SeedUsers(RoutePlanningDatabaseContext context)

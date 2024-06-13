@@ -35,13 +35,7 @@ public sealed class Order : AggregateRoot<Order>
 
     private readonly List<Connection> connections = [];
     public IReadOnlyCollection<Connection> Connections => connections.AsReadOnly();
-    /*
-     * public sealed record CreateOrderCommand(
-    double Weight,
-    User.EntityId UserEntityId,
-    FreightType.EntityId FreightEntityId,
-    List<Connection.EntityId> Route);
-     */
+
     public static Order AddOrder(
         DateTime createdAt,
         DateTime expectedTimeOfArrival,

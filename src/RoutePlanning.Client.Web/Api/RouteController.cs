@@ -1,14 +1,14 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Authorization;
+﻿using System.Text.Json;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using RoutePlanning.Application.Locations.Commands.CreateTwoWayConnection;
-using RoutePlanning.Client.Web.Authorization;
+using RoutePlanning.Application.Orders.Commands;
 
 namespace RoutePlanning.Client.Web.Api;
 
 [Route("api/[controller]")]
 [ApiController]
-[Authorize(nameof(TokenRequirement))]
+//[Authorize(nameof(TokenRequirement))]
 public sealed class RoutesController : ControllerBase
 {
     private readonly IMediator mediator;
@@ -27,6 +27,14 @@ public sealed class RoutesController : ControllerBase
     [HttpPost("[action]")]
     public async Task AddTwoWayConnection(CreateTwoWayConnectionCommand command)
     {
+        await mediator.Send(command);
+    }
+
+    [HttpPost("[action]")]
+    public async Task CreateOrder(CreateOrderCommand command)
+    {
+        var x = JsonSerializer.Serialize(command);
+        Console.WriteLine(x);
         await mediator.Send(command);
     }
 }
