@@ -9,38 +9,43 @@ public sealed class Order : AggregateRoot<Order>
     public Order(
         DateTime createdAt,
         DateTime expectedTimeOfArrival,
-        Distance totalDistance,
-        Price totalCost,
         Weight weight,
         User user,
-        FreightType freightt)
+        FreightType freightType)
     {
         CreatedAt = createdAt;
         ExpectedTimeOfArrival = expectedTimeOfArrival;
-        TotalDistance = totalDistance;
-        TotalCost = totalCost;
         Weight = weight;
         User = user;
-        Freightt = freightt;
+        FreightType = freightType;
     }
 
     private Order()
     {
-        TotalDistance = null!;
-        TotalCost = null!;
         User = null!;
         Weight = null!;
-        Freightt = null!;
+        FreightType = null!;
     }
 
     public DateTime CreatedAt { get; }
     public DateTime ExpectedTimeOfArrival { get; }
-    public Distance TotalDistance { get; set; }
-    public Price TotalCost { get; set; }
     public Weight Weight { get; set; }
-    public FreightType Freightt { get; set; }
+    public FreightType FreightType { get; set; }
     public User User { get; init; }
 
     private readonly List<Connection> connections = [];
     public IReadOnlyCollection<Connection> Connections => connections.AsReadOnly();
+
+    public static Order AddOrder(
+        DateTime createdAt,
+        DateTime expectedTimeOfArrival,
+        Weight weight,
+        User user,
+        FreightType freightType,
+        List<Connection> connections)
+    {
+        var order = new Order(createdAt, expectedTimeOfArrival, weight, user, freightType);
+        order.connections.AddRange(connections);
+        return new Order(createdAt, expectedTimeOfArrival, weight, user, freightType);
+    }
 }
