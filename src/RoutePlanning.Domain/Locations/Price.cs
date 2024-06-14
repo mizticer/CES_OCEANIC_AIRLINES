@@ -7,7 +7,7 @@ public sealed record Price : IValueObject
     {
         if (value <= 0)
         {
-            throw new ArgumentOutOfRangeException(nameof(value), "A distance must be greater than zero");
+            throw new ArgumentOutOfRangeException(nameof(value), "A cost must be greater than zero");
         }
 
         Value = value;
